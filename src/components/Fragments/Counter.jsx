@@ -6,7 +6,27 @@ export class Counter extends Component {
     this.state = {
       count: 0,
     };
+    console.log("constructor");
   }
+
+  componentDidMount() {
+    this.setState({
+      count: 0
+    });
+    console.log("componentDidMount");
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log("componentDidUpdate");
+    console.log(prevProps);
+    console.log(prevState);
+    if (this.state.count === 10) {
+      this.setState({
+        count: 0,
+      });
+    }
+  }
+
   render() {
     return (
       <div className="flex items-center">
@@ -17,6 +37,7 @@ export class Counter extends Component {
         >
           +
         </button>
+        {console.log("render")}
       </div>
     );
   }
