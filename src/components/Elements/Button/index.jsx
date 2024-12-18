@@ -8,7 +8,7 @@ const Button = ({
     <button
       className={`h-10 px-6 font-semibold text-white ${classname} rounded-md`}
       type={type}
-      onClick={() => onClick()}
+      onClick={onClick}
     >
       {children}
     </button>
