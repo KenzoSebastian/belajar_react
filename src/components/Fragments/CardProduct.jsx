@@ -16,12 +16,12 @@ const Header = ({ image }) => {
   );
 };
 
-const Body = ({ children, title }) => {
+const Body = ({ children, name }) => {
   return (
     <div className="px-5 pb-5 h-full">
       <a href="#">
         <h5 className="text-xl font-semibold tracking-tight text-white">
-          {title}
+          {name}
         </h5>
         <p className="text-sm text-white">{children}</p>
       </a>
