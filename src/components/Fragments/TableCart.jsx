@@ -1,9 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
+import { DarkMode } from "../../context/DarkMode";
 
 const TableCart = ({ products }) => {
   const cart = useSelector((state) => state.cart.data);
   const [totalPrice, setTotalPrice] = useState(0);
+  const { isDarkMode } = useContext(DarkMode);
 
   useEffect(() => {
     if (products.length > 0 && cart.length > 0) {
@@ -19,15 +21,17 @@ const TableCart = ({ products }) => {
   const totalPriceRef = useRef(null);
 
   useEffect(() => {
-    if (cart.length > 0) {
-      totalPriceRef.current.style.display = "table-row";
-    } else {
-      totalPriceRef.current.style.display = "none";
-    }
+    cart.length > 0
+      ? (totalPriceRef.current.style.display = "table-row")
+      : (totalPriceRef.current.style.display = "none");
   }, [cart]);
 
   return (
-    <table className="text-left table-auto border-separate border-spacing-x-5">
+    <table
+      className={`text-left table-auto border-separate border-spacing-x-5 ${
+        isDarkMode && "text-white"
+      }`}
+    >
       <thead>
         <tr>
           <th>Product</th>
@@ -44,17 +48,15 @@ const TableCart = ({ products }) => {
               <tr key={item.id}>
                 <td>{product.title.substring(0, 10)}...</td>
                 <td>
+                  ${" "}
                   {product.price.toLocaleString("id-ID", {
-                    style: "currency",
-                    currency: "USD",
                     minimumFractionDigits: 0,
                   })}
                 </td>
                 <td>{item.qty}</td>
                 <td>
+                  ${" "}
                   {(product.price * item.qty).toLocaleString("id-ID", {
-                    style: "currency",
-                    currency: "USD",
                     minimumFractionDigits: 0,
                   })}
                 </td>
@@ -67,9 +69,8 @@ const TableCart = ({ products }) => {
           </td>
           <td>
             <b>
+              ${" "}
               {totalPrice.toLocaleString("id-ID", {
-                style: "currency",
-                currency: "USD",
                 minimumFractionDigits: 0,
               })}
             </b>
