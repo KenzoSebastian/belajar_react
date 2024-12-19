@@ -9,7 +9,6 @@ const DetailProductPage = () => {
   useEffect(() => {
     getDetailProduct(id, (data) => setProduct(data));
   }, [id]);
-  console.log(product);
   return (
     <div className="w-100 min-h-screen flex justify-center items-center">
       {Object.keys(product).length !== 0 && (
@@ -55,7 +54,7 @@ const DetailProductPage = () => {
                 </button>
               </div>
               <button
-                class="flex-none flex items-center justify-center w-9 h-9 rounded-md text-slate-300 border border-slate-200"
+                className="flex-none flex items-center justify-center w-9 h-9 rounded-md text-slate-300 border border-slate-200"
                 type="button"
                 aria-label="Like"
               >
@@ -66,14 +65,14 @@ const DetailProductPage = () => {
                   aria-hidden="true"
                 >
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
                   />
                 </svg>
               </button>
             </div>
-            <p class="text-sm text-slate-700">
+            <p className="text-sm text-slate-700">
               Free shipping on all continental US orders.
             </p>
           </form>
