@@ -1,8 +1,8 @@
 import { createContext, useContext, useReducer } from "react";
 
-const TotalPriceContext = createContext(null); // bisa dikosongkan juga
+export const TotalPriceContext = createContext(null); // bisa dikosongkan juga
 
-const TotalPriceDispatchContext = createContext(null);
+export const TotalPriceDispatchContext = createContext(null);
 
 const totalPriceReducer = (state, action) => {
   switch (action.type) {
@@ -27,20 +27,20 @@ export const TotalPriceProvider = ({ children }) => {
 };
 
 // Custom hook (harus nya di pisah)
-export const useTotalPrice = () => {
-  const context = useContext(TotalPriceContext);
-  if (context === undefined) {
-    throw new Error("useTotalPrice must be used within a TotalPriceProvider");
-  }
-  return context;
-};
+// export const useTotalPrice = () => {
+//   const context = useContext(TotalPriceContext);
+//   if (context === undefined) {
+//     throw new Error("useTotalPrice must be used within a TotalPriceProvider");
+//   }
+//   return context;
+// };
 
-export const useTotalPriceDispatch = () => {
-  const context = useContext(TotalPriceDispatchContext);
-  if (context === undefined) {
-    throw new Error(
-      "useTotalPriceDispatch must be used within a TotalPriceProvider"
-    );
-  }
-  return context;
-};
+// export const useTotalPriceDispatch = () => {
+//   const context = useContext(TotalPriceDispatchContext);
+//   if (context === undefined) {
+//     throw new Error(
+//       "useTotalPriceDispatch must be used within a TotalPriceProvider"
+//     );
+//   }
+//   return context;
+// };

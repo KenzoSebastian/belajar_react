@@ -1,13 +1,14 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { DarkMode } from "../../context/DarkMode";
-import { useTotalPrice, useTotalPriceDispatch } from "../../context/TotalPriceContext";
+import { useTotalPriceCart } from "../../hooks/useTotalPrice";
 
 const TableCart = ({ products }) => {
   const cart = useSelector((state) => state.cart.data);
   const { isDarkMode } = useContext(DarkMode);
-  const dispatchTotalPrice = useTotalPriceDispatch();
-  const { total } = useTotalPrice(); 
+  // const dispatchTotalPrice = useTotalPriceDispatch();
+  // const { total } = useTotalPrice();
+  const [{ total }, dispatchTotalPrice] = useTotalPriceCart();
 
   useEffect(() => {
     if (products.length > 0 && cart.length > 0) {
